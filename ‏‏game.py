@@ -624,7 +624,7 @@ def Four_in_row():
       
           #TIE CHECK                
           Tie=True     
-          for i in range(6):
+          for i in range(7):
             if Board[i]["Revenue"]!= 6:
               Tie=False
               
