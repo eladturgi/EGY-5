@@ -1,12 +1,7 @@
 import pygame,sys,time,random
 from tkinter import *
 import tkinter.messagebox
-<<<<<<< Updated upstream
 
-#YOELLLLLLL
-=======
-#AAAAAAAAAAA
->>>>>>> Stashed changes
 
 #tkinter~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #the username and password
@@ -454,7 +449,7 @@ def Four_in_row():
           if event.type == pygame.QUIT:
             return True
 
-          if event.type == pygame.MOUSEBUTTONDOWN:
+          if event.type == pygame.MOUSEBUTTONDOWN and Human_turn:
             x,y = pygame.mouse.get_pos()
           
              
@@ -543,8 +538,9 @@ def Four_in_row():
                 time.sleep(delay)
                 if pygame.mouse.get_pressed()==(1,0,0):
                   return
+
+            Human_turn=False
                 
-            
               
         #(PC)The computer's turn to play-------------------------------     
     else:
