@@ -240,10 +240,15 @@ computerLogo=pygame.image.load('computerLogo.png')
 blank=pygame.image.load('blank.jpg')
 playerWins=pygame.image.load('playerWins.png')
 computerWins=pygame.image.load('computerWins.png')
-
+TIE=pygame.image.load('Tie.png')
+###
+instructions=pygame.image.load('instructions.jpg')
+help_s=pygame.image.load('help_s.jpg')
+help_4=pygame.image.load('help_4.jpg')
+###
 #~~~~~~~~~~~~~~Game 4 in row~~~~~~~~~~~~~~~~~~~~~~~~~~
 def Four_in_row():
-  
+  global NumberGames4inRow
   screen.blit(RowBoard,(0,0))
   pygame.display.update()
   
@@ -452,9 +457,14 @@ def Four_in_row():
           if event.type == pygame.MOUSEBUTTONDOWN and Human_turn:
             x,y = pygame.mouse.get_pos()
           
-             
+            #user function
+            if 644<x<675 and 18<y<55:
+              return True
+            if 691<x<724 and 16<y<55:
+              NumberGames4inRow+=1
+              return Four_in_row()
             #------------Column 1----------------------
-            if 156<x<211  and Board[0]["Y"]>MAX_height:
+            if 156<x<211 and y>172 and Board[0]["Y"]>MAX_height:
               Insert_column(0,"red",REDtoken)
               Human_turn=False
               if winner(0,"red",Board[0]["Revenue"],4):
@@ -466,7 +476,7 @@ def Four_in_row():
                   return
               
             #------------Column 2------------------------
-            if 227<x<286  and Board[1]["Y"]>MAX_height:
+            if 227<x<286 and y>172 and Board[1]["Y"]>MAX_height:
               Insert_column(1,"red",REDtoken)
               Human_turn=False
               if winner(1,"red",Board[1]["Revenue"],4):
@@ -478,7 +488,7 @@ def Four_in_row():
                   return
               
             #------------Column 3----------------------
-            if 298<x<357  and Board[2]["Y"]>MAX_height:
+            if 298<x<357 and y>172 and Board[2]["Y"]>MAX_height:
               Insert_column(2,"red",REDtoken)
               Human_turn=False
               if winner(2,"red",Board[2]["Revenue"],4):
@@ -490,7 +500,7 @@ def Four_in_row():
                   return
               
             #------------Column 4----------------------
-            if 371<x<427  and Board[3]["Y"]>MAX_height:
+            if 371<x<427 and y>172 and Board[3]["Y"]>MAX_height:
               Insert_column(3,"red",REDtoken)
               Human_turn=False
               if winner(3,"red",Board[3]["Revenue"],4):
@@ -502,7 +512,7 @@ def Four_in_row():
                   return
               
             #------------Column 5----------------------
-            if 443<x<501  and Board[4]["Y"]>MAX_height:
+            if 443<x<501 and y>172 and Board[4]["Y"]>MAX_height:
               Insert_column(4,"red",REDtoken)
               Human_turn=False
               if winner(4,"red",Board[4]["Revenue"],4):
@@ -514,7 +524,7 @@ def Four_in_row():
                   return
               
             #------------Column 6----------------------
-            if 516<x<573  and Board[5]["Y"]>MAX_height:
+            if 516<x<573 and y>172 and Board[5]["Y"]>MAX_height:
               Insert_column(5,"red",REDtoken)
               Human_turn=False
               if winner(5,"red",Board[5]["Revenue"],4):
@@ -527,7 +537,7 @@ def Four_in_row():
                 
               
             #------------Column 7----------------------
-            if 588<x<644  and Board[6]["Y"]>MAX_height:
+            if 588<x<644 and y>172 and Board[6]["Y"]>MAX_height:
               Insert_column(6,"red",REDtoken)
               Human_turn=False
               
@@ -538,9 +548,8 @@ def Four_in_row():
                 time.sleep(delay)
                 if pygame.mouse.get_pressed()==(1,0,0):
                   return
-
-            Human_turn=False
                 
+              Human_turn=False
               
         #(PC)The computer's turn to play-------------------------------     
     else:
@@ -620,8 +629,15 @@ def Four_in_row():
               Tie=False
               
           if Tie:
-            print("TIE")
-                
+            screen.blit(blank,(0,0))
+            screen.blit(TIE,(0,0)) 
+            pygame.display.update()
+            time.sleep(delay)
+            while True:
+              for event in pygame.event.get():
+                if pygame.mouse.get_pressed()==(1,0,0):
+                  return
+                        
   
           Human_turn=True
           PC_choice=None
@@ -821,6 +837,7 @@ def Snakes():
   #-----------------------------------------------------------------------
   #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~GAME LOOP~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   while(True):
+        global NumberGamesSankesAndLadders
         Change=False #Change player flag
         screen.blit(logo,(0,0)) #place logo 
         screen.blit(person1,(X1,Y1)) #place person1
@@ -840,6 +857,14 @@ def Snakes():
           #-------------------ROLL DICE CASE----------------------
           if event.type == pygame.MOUSEBUTTONDOWN:
             x,y = pygame.mouse.get_pos()
+
+            if 644<x<675 and 18<y<55:
+              return True
+            if 691<x<724 and 16<y<55:
+              NumberGamesSankesAndLadders+=1
+              return Snakes()
+              
+            
             if 6<x<791 and 538<y<596:
               cube_answer=roll()
               #cube_answer=1                                               ######################force cube
@@ -1123,17 +1148,32 @@ def Intro(game):
                  if event.key == pygame.K_ESCAPE:
                      return True      
                             
-                
-            if pressed ==(1,0,0) and 170<x<586 and 43<y<129:
-                if game=='Snakes&Ladders':
-                  return Snakes()
-                elif game=='4InRow':
-                  return Four_in_row()
-            if pressed ==(1,0,0) and 138<x<625 and 215<y<300:
-                if game=='snakes':
-                  print('snakes Instructions')
-                else:
-                  print('4inrow Instructions')
+            if event.type == pygame.MOUSEBUTTONDOWN:
+              x,y = pygame.mouse.get_pos()   
+              if 170<x<586 and 43<y<129:
+                  if game=='Snakes&Ladders':
+                    return Snakes()
+                  elif game=='4InRow':
+                    return Four_in_row()
+              if 138<x<625 and 215<y<300:
+                  if game =='Snakes&Ladders':
+                    screen.fill([255,255,255])
+                    screen.blit(help_s,(175,100)) 
+                    pygame.display.update()
+                    time.sleep(0.5)
+                    while True:
+                            for event in pygame.event.get():
+                              if pygame.mouse.get_pressed()==(1,0,0):
+                                return
+                  if game=='4InRow':
+                    screen.fill([255,255,255])
+                    screen.blit(help_4,(175,20)) 
+                    pygame.display.update()
+                    time.sleep(0.5)
+                    while True:
+                            for event in pygame.event.get():
+                              if pygame.mouse.get_pressed()==(1,0,0):
+                                return
                 
 
   
