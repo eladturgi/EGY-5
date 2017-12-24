@@ -1,8 +1,12 @@
 import pygame,sys,time,random
 from tkinter import *
 import tkinter.messagebox
+<<<<<<< Updated upstream
 
 #YOELLLLLLL
+=======
+#AAAAAAAAAAA
+>>>>>>> Stashed changes
 
 #tkinter~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #the username and password
