@@ -274,7 +274,7 @@ def SnakeQuestion(playerNumber,screen):
                 return False
 
   #
-#reset_data_file()
+reset_data_file()
 update_data_dict()
 
   #------------------------------------------            
