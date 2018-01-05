@@ -72,7 +72,6 @@ PlayersInfo={1:[0,0],2:[0,0]}
 #~~~~~~~~~~~~~~Game Snakes & Ladders~~~~~~~~~~~~~~~~~~~~
 
 
-
 X1, Y1 = 17, 494  # The initial coordinates in the Board -player1
 X2, Y2 = 48, 494  # The initial coordinates in the Board -player2
 cube_width = 80
