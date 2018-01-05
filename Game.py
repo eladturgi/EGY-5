@@ -191,7 +191,7 @@ def EducLogin():
       '''
       pygame.display.update()
       return ShowAll()
-
+#-------------end educator--------------
    
   else:
     return True
