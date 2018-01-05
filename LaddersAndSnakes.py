@@ -86,7 +86,7 @@ reset_running=False
 logo = logo1  # logo
 TurnPlayer1 = True  # indicate whose turn is now
 #-----------------------------------------------------
-#question data input&output
+#---------------question data input&output----------
 def update_data_dict():
     filename = "data.txt"
     file = open(filename, "r")
@@ -122,10 +122,13 @@ def reset_data_file():
         lines_of_text+= str(0)+" "+ str(0)+"\n"
     fh.writelines(lines_of_text)
     fh.close()
-    
-#----------------------------
 
-#/////////////print function
+update_data_dict()
+#reset_data_file()
+
+#----------------end data file and dict--------------
+
+
 def message_display(text,x,y,font_size,color,screen):
     def text_objects(text, font,color):
         textSurface = font.render(text, True, color)
@@ -273,9 +276,8 @@ def SnakeQuestion(playerNumber,screen):
                 time.sleep(1.5)
                 return False
 
-  #
-#reset_data_file()
-update_data_dict()
+
+
 
   #------------------------------------------            
   # roll dice function

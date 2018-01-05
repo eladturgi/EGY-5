@@ -144,12 +144,16 @@ def EducLogin():
   def ShowAll():
     black=0,0,0
     white=255,255,255
-    message_display("Ladders and Snakes correct answers reports:",340,220,30,black)
+    message_display("Ladders and Snakes correct answers report:",278,320,25,(0,100,100))
+    message_display("Connect Four win report :",155,220,25,(0,100,100))
     Q=LaddersAndSnakes.Q
+    wins=connect_four.wins
+    message_display("PC wins: {0}    Player wins: {1}".format(wins[1],wins[0]),168,255,25,black)
+     
     for i in range(1,10):
-        message_display("question number {0}: {1}\{2} ".format(i,Q[i][1],Q[i][0],[1]),115,225+i*22,20,black)
+        message_display("question number {0}: {1}\{2} ".format(i,Q[i][1],Q[i][0],[1]),115,330+i*22,20,black)
     for i in range(10,16):
-        message_display("question number {0}: {1}\{2} ".format(i,Q[i][1],Q[i][0],[1]),120,225+i*22,20,black)
+        message_display("question number {0}: {1}\{2} ".format(i,Q[i][1],Q[i][0],[1]),400,330+i*22-9*22,20,black)
         
     pygame.display.update()
     
@@ -164,6 +168,10 @@ def EducLogin():
     #while True:
       # screen color
       screen.fill([255, 255, 255])
+      message_display("current game:",107,80,30,(200,0,0))
+      message_display("number of Connect Four games: "+str(NumberGames4inRow),247,120,30,(0,0,0))
+      message_display("number of Snakes & Ladders games: "+str(NumberGamesSankesAndLadders),286,150,30,(0,0,0))
+      message_display("total games:",92,185,30,(200,0,0))
       # text message
       pygame.font.init() 
       myfont = pygame.font.SysFont('Arial Black', 50)
@@ -172,6 +180,7 @@ def EducLogin():
       text = 'Educator: ' + str(Username)
       textsurface = myfont.render(text, False, (0, 0, 0))
       screen.blit(textsurface, (0, 0))
+      '''
       # print game statistics
       text2 = 'Number of games in 4 in row: ' + str(NumberGames4inRow)
       textsurface2 = myfont2.render(text2, False, (0, 0, 0))
@@ -179,6 +188,7 @@ def EducLogin():
       text3 = 'Number of games in snakes and laaders: ' + str(NumberGamesSankesAndLadders)
       textsurface3 = myfont2.render(text3, False, (0, 0, 0))
       screen.blit(textsurface3, (0, 150))
+      '''
       pygame.display.update()
       return ShowAll()
 

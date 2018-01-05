@@ -18,10 +18,43 @@ NumberGames4inRow=0
 empty = None
 GoUp = 71  # Move up one row
 MAX_height = 170  # End of the board
-#counter
+
+reset_list_running=False
+wins=[0,0]
 delay = 3
 
-     
+#-----------wins list and file input&output----------
+def update_wins_list():
+    filename='data2.txt'
+    file=open(filename,"r")
+    x=[]
+    for line in file:
+        x=line
+        
+    file.close()
+    
+    
+    
+    wins[0]=int(x[0])
+    wins[1]=int(x[2])
+
+def update_wins_file():
+    fh = open("data2.txt", "w")
+    fh.writelines(str(wins[0])+" "+str(wins[1]))
+    fh.close()
+
+def reset_wins_file():
+    global reset_list_running
+    reset_list_running=True
+    fh = open("data2.txt", "w")
+    fh.writelines(str(0)+" "+str(0))
+    fh.close()
+ 
+update_wins_list()
+#reset_wins_file() 
+
+#-----------------end wins list and file----------------
+
 def winner(column , color , row , stop , Board):
     
       row -= 1  # Board[column]["Revenue"] =  to the row +1!!
@@ -271,6 +304,8 @@ def Start_Game(screen):
                       Insert_column(0, "red", REDtoken, screen,Board)
                       Human_turn = False
                       if winner(0, "red", Board[0]["Revenue"], 4,Board):
+                        wins[0]+=1
+                        update_wins_file()
                         screen.blit(blank, (0, 0))
                         screen.blit(playerWins, (0, 0)) 
                         pygame.display.update()
@@ -283,6 +318,8 @@ def Start_Game(screen):
                       Insert_column(1, "red", REDtoken, screen,Board)
                       Human_turn = False
                       if winner(1, "red", Board[1]["Revenue"], 4,Board):
+                        wins[0]+=1
+                        update_wins_file()
                         screen.blit(blank, (0, 0))
                         screen.blit(playerWins, (0, 0)) 
                         pygame.display.update()
@@ -294,6 +331,8 @@ def Start_Game(screen):
                       Insert_column(2, "red", REDtoken, screen,Board)
                       Human_turn = False
                       if winner(2, "red", Board[2]["Revenue"], 4,Board):
+                        wins[0]+=1
+                        update_wins_file()
                         screen.blit(blank, (0, 0))
                         screen.blit(playerWins, (0, 0)) 
                         pygame.display.update()
@@ -306,6 +345,8 @@ def Start_Game(screen):
                       Insert_column(3, "red", REDtoken, screen,Board)
                       Human_turn = False
                       if winner(3, "red", Board[3]["Revenue"], 4,Board):
+                        wins[0]+=1
+                        update_wins_file()
                         screen.blit(blank, (0, 0))
                         screen.blit(playerWins, (0, 0)) 
                         pygame.display.update()
@@ -318,6 +359,8 @@ def Start_Game(screen):
                       Insert_column(4, "red", REDtoken, screen,Board)
                       Human_turn = False
                       if winner(4, "red", Board[4]["Revenue"], 4,Board):
+                        wins[0]+=1
+                        update_wins_file()
                         screen.blit(blank, (0, 0))
                         screen.blit(playerWins, (0, 0)) 
                         pygame.display.update()
@@ -330,6 +373,8 @@ def Start_Game(screen):
                       Insert_column(5, "red", REDtoken, screen,Board)
                       Human_turn = False
                       if winner(5, "red", Board[5]["Revenue"], 4,Board):
+                        wins[0]+=1
+                        update_wins_file()
                         screen.blit(blank, (0, 0))
                         screen.blit(playerWins, (0, 0)) 
                         pygame.display.update()
@@ -343,6 +388,8 @@ def Start_Game(screen):
                       Human_turn = False
                       
                       if winner(6, "red", Board[6]["Revenue"], 4,Board):
+                        wins[0]+=1
+                        update_wins_file()
                         screen.blit(blank, (0, 0))
                         screen.blit(playerWins, (0, 0)) 
                         pygame.display.update()
@@ -424,6 +471,8 @@ def Start_Game(screen):
                               Insert_column(PC_choice, "yellow", YELLOWtoken, screen,Board)
                       
                   if winner(PC_choice, "yellow", Board[PC_choice]["Revenue"], 4,Board):
+                        wins[1]+=1
+                        update_wins_file()
                         screen.blit(blank, (0, 0))
                         screen.blit(computerWins, (0, 0)) 
                         pygame.display.update()
