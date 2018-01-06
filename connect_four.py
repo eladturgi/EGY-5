@@ -27,16 +27,15 @@ delay = 3
 def update_wins_list():
     filename='data2.txt'
     file=open(filename,"r")
-    x=[]
+    x=""
     for line in file:
-        x=line
+        x+=line
         
     file.close()
-    
-    
+    x=x.split()
     
     wins[0]=int(x[0])
-    wins[1]=int(x[2])
+    wins[1]=int(x[1])
 
 def update_wins_file():
     fh = open("data2.txt", "w")
@@ -269,6 +268,7 @@ def Start_Game(screen):
                      {0:empty, 1:empty, 2:empty, 3:empty, 4:empty, 5:empty, "Y":534, "X":586, "Revenue":0}]
           PC_choice = None
           Human_turn = True
+          Human_Win=False
           screen.blit(RowBoard, (0, 0))
           global NumberGames4inRow
           NumberGames4inRow+=1
@@ -304,100 +304,64 @@ def Start_Game(screen):
                       Insert_column(0, "red", REDtoken, screen,Board)
                       Human_turn = False
                       if winner(0, "red", Board[0]["Revenue"], 4,Board):
-                        wins[0]+=1
-                        update_wins_file()
-                        screen.blit(blank, (0, 0))
-                        screen.blit(playerWins, (0, 0)) 
-                        pygame.display.update()
-                        time.sleep(delay+2)
-                        if pygame.mouse.get_pressed() == (1, 0, 0):
-                          return
-                      
+                        Human_Win=True
+                          
                     #------------Column 2------------------------
-                    if 227 < x < 286 and y > 172 and Board[1]["Y"] > MAX_height:
+                    elif 227 < x < 286 and y > 172 and Board[1]["Y"] > MAX_height:
                       Insert_column(1, "red", REDtoken, screen,Board)
                       Human_turn = False
                       if winner(1, "red", Board[1]["Revenue"], 4,Board):
-                        wins[0]+=1
-                        update_wins_file()
-                        screen.blit(blank, (0, 0))
-                        screen.blit(playerWins, (0, 0)) 
-                        pygame.display.update()
-                        time.sleep(delay+2)
-                        return
+                        Human_Win=True
                       
                     #------------Column 3----------------------
-                    if 298 < x < 357 and y > 172 and Board[2]["Y"] > MAX_height:
+                    elif 298 < x < 357 and y > 172 and Board[2]["Y"] > MAX_height:
                       Insert_column(2, "red", REDtoken, screen,Board)
                       Human_turn = False
                       if winner(2, "red", Board[2]["Revenue"], 4,Board):
-                        wins[0]+=1
-                        update_wins_file()
-                        screen.blit(blank, (0, 0))
-                        screen.blit(playerWins, (0, 0)) 
-                        pygame.display.update()
-                        time.sleep(delay+2)
-                        if pygame.mouse.get_pressed() == (1, 0, 0):
-                          return
+                        Human_Win=True
                       
                     #------------Column 4----------------------
-                    if 371 < x < 427 and y > 172 and Board[3]["Y"] > MAX_height:
+                    elif 371 < x < 427 and y > 172 and Board[3]["Y"] > MAX_height:
                       Insert_column(3, "red", REDtoken, screen,Board)
                       Human_turn = False
                       if winner(3, "red", Board[3]["Revenue"], 4,Board):
-                        wins[0]+=1
-                        update_wins_file()
-                        screen.blit(blank, (0, 0))
-                        screen.blit(playerWins, (0, 0)) 
-                        pygame.display.update()
-                        time.sleep(delay+2)
-                        if pygame.mouse.get_pressed() == (1, 0, 0):
-                          return
+                        Human_Win=True
                       
                     #------------Column 5----------------------
-                    if 443 < x < 501 and y > 172 and Board[4]["Y"] > MAX_height:
+                    elif 443 < x < 501 and y > 172 and Board[4]["Y"] > MAX_height:
                       Insert_column(4, "red", REDtoken, screen,Board)
                       Human_turn = False
                       if winner(4, "red", Board[4]["Revenue"], 4,Board):
-                        wins[0]+=1
-                        update_wins_file()
-                        screen.blit(blank, (0, 0))
-                        screen.blit(playerWins, (0, 0)) 
-                        pygame.display.update()
-                        time.sleep(delay+2)
-                        if pygame.mouse.get_pressed() == (1, 0, 0):
-                          return
+                        Human_Win=True
                       
                     #------------Column 6----------------------
-                    if 516 < x < 573 and y > 172 and Board[5]["Y"] > MAX_height:
+                    elif 516 < x < 573 and y > 172 and Board[5]["Y"] > MAX_height:
                       Insert_column(5, "red", REDtoken, screen,Board)
                       Human_turn = False
                       if winner(5, "red", Board[5]["Revenue"], 4,Board):
-                        wins[0]+=1
-                        update_wins_file()
-                        screen.blit(blank, (0, 0))
-                        screen.blit(playerWins, (0, 0)) 
-                        pygame.display.update()
-                        time.sleep(delay+2)
-                        if pygame.mouse.get_pressed() == (1, 0, 0):
-                          return
+                       Human_Win=True
                       
                     #------------Column 7----------------------
-                    if 588 < x < 644 and y > 172 and Board[6]["Y"] > MAX_height:
+                    elif 588 < x < 644 and y > 172 and Board[6]["Y"] > MAX_height:
                       Insert_column(6, "red", REDtoken, screen,Board)
                       Human_turn = False
                       
                       if winner(6, "red", Board[6]["Revenue"], 4,Board):
+                       Human_Win=True
+                    
+                    #Win Case $$$$$$$$$$$
+                    if Human_Win:
                         wins[0]+=1
                         update_wins_file()
                         screen.blit(blank, (0, 0))
                         screen.blit(playerWins, (0, 0)) 
                         pygame.display.update()
-                        time.sleep(delay+2)
-                        if pygame.mouse.get_pressed() == (1, 0, 0):
-                          return
-                        
-                      Human_turn = False
+                        time.sleep(delay)
+                        while True:
+                            for event2 in pygame.event.get():
+                              if event2.type == pygame.MOUSEBUTTONDOWN:
+                                if pygame.mouse.get_pressed()==(1,0,0):
+                                    return
                       
                 #(PC)The computer's turn to play-------------------------------     
             else:
@@ -407,14 +371,12 @@ def Start_Game(screen):
                   it is best to put a token into the board
                   """
                   # Priority1
-                  print("A1")
                   PC_choice = Artificial_intelligence("yellow", 4,Board)
                   if PC_choice != None:  # Priority1  work!
                     Insert_column(PC_choice, "yellow", YELLOWtoken, screen,Board)
                   
                   else:  # #go to Priority2 (if Priority1 not work)
                     # Priority2
-                    print("A2")
                     PC_choice = Artificial_intelligence("red", 4,Board)
                     
                     if PC_choice != None:  # Priority2  work!
@@ -422,7 +384,6 @@ def Start_Game(screen):
                     
                     else:  # go to Priority3 (if Priority2 not work)
                       # Priority3
-                      print("A3")
                       PC_choice = Artificial_intelligence2("yellow", 3,Board)
                       
                       if PC_choice != None:  # Priority3  work!
@@ -430,7 +391,6 @@ def Start_Game(screen):
                         
                       else:  # go to Priority4 (if Priority3 not work)
                         # Priority4
-                        print("A4")
                         PC_choice = Artificial_intelligence2("red", 3,Board)
                         
                         if PC_choice != None:  # Priority3  work!
@@ -438,14 +398,12 @@ def Start_Game(screen):
         
                         else:  # go to Priority3 (if Priority2 not work)
                           # Priority5
-                          print("A5")
                           PC_choice = Artificial_intelligence2("yellow", 2,Board)
                           
                           if PC_choice != None:  # Priority3  work!
                             Insert_column(PC_choice, "yellow", YELLOWtoken, screen,Board)
         
                           else:
-                            print("A6")
                             PC_choice = Artificial_intelligence2("red", 2,Board)
                             
                             if PC_choice != None:  # Priority3  work!

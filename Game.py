@@ -11,16 +11,13 @@ Password = 'None'
 ValidUser = False
 
 
-
 def message_display(text,x,y,font_size,color):
-    def text_objects(text, font,color):
-        textSurface = font.render(text, True, color)
-        return textSurface, textSurface.get_rect()
     
     largeText = pygame.font.Font('freesansbold.ttf',font_size)
-    TextSurf, TextRect = text_objects(text, largeText,color)
-    TextRect.center = (x,y)
-    screen.blit(TextSurf, TextRect)
+    TextSurf = largeText.render(text, True, color)
+    #TextRect.center = (x,y)
+    screen.blit(TextSurf, (x,y))
+    
 
     
 
@@ -144,14 +141,14 @@ def EducLogin():
   def ShowAll():
     black=0,0,0
     white=255,255,255
-    message_display("Ladders and Snakes correct answers report:",278,320,25,(0,100,100))
-    message_display("Connect Four win report :",155,220,25,(0,100,100))
+    message_display("Ladders and Snakes correct answers report:",0,320,25,(0,100,100))
+    message_display("Connect Four win report :",0,220,25,(0,100,100))
     Q=LaddersAndSnakes.Q
     wins=connect_four.wins
-    message_display("PC wins: {0}    Player wins: {1}".format(wins[1],wins[0]),168,255,25,black)
+    message_display("PC wins: {0}    Player wins: {1}".format(wins[1],wins[0]),0,255,25,black)
      
     for i in range(1,10):
-        message_display("question number {0}: {1}\{2} ".format(i,Q[i][1],Q[i][0],[1]),115,330+i*22,20,black)
+        message_display("question number {0}: {1}\{2} ".format(i,Q[i][1],Q[i][0],[1]),0,330+i*22,20,black)
     for i in range(10,16):
         message_display("question number {0}: {1}\{2} ".format(i,Q[i][1],Q[i][0],[1]),400,330+i*22-9*22,20,black)
         
@@ -168,10 +165,10 @@ def EducLogin():
     #while True:
       # screen color
       screen.fill([255, 255, 255])
-      message_display("current game:",107,80,30,(200,0,0))
-      message_display("number of Connect Four games: "+str(NumberGames4inRow),247,120,30,(0,0,0))
-      message_display("number of Snakes & Ladders games: "+str(NumberGamesSankesAndLadders),286,150,30,(0,0,0))
-      message_display("total games:",92,185,30,(200,0,0))
+      message_display("current game:",0,80,30,(200,0,0))
+      message_display("number of Connect Four games: "+str(NumberGames4inRow),0,120,30,(0,0,0))
+      message_display("number of Snakes & Ladders games: "+str(NumberGamesSankesAndLadders),0,150,30,(0,0,0))
+      message_display("total games:",0,185,30,(200,0,0))
       # text message
       pygame.font.init() 
       myfont = pygame.font.SysFont('Arial Black', 50)
@@ -322,8 +319,7 @@ def Menu():
           #~~~~~~~~~~~~~LaddersAndSnakes&Ladders~~~~
         elif pressed == (1, 0, 0) and 145 < x < 625 and 345 < y < 407:
           return Intro("LaddersAndSnakes&Ladders")
-             
-          #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+         #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 def Game():

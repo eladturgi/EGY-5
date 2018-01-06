@@ -154,8 +154,8 @@ def LadderQuestion(playerNumber,screen):
     X1,X2=FixIndex(X1,X2)
     screen.blit(person1,(X1,Y1)) #place person1
     screen.blit(person2,(X2,Y2)) #place person2
-    message_display("player1 questions:{0}\{1}".format(PlayersInfo[1][1],PlayersInfo[1][0]), 340, 8, 20, (0,0,0), screen)
-    message_display("player2 questions:{0}\{1}".format(PlayersInfo[2][1],PlayersInfo[2][0]), 340, 40, 20, (0,0,0), screen)
+    message_display("player1 questions:{0}\{1}".format(PlayersInfo[1][1],PlayersInfo[1][0]), 400, 8, 20, (0,0,0), screen)
+    message_display("player2 questions:{0}\{1}".format(PlayersInfo[2][1],PlayersInfo[2][0]), 400, 40, 20, (0,0,0), screen)
     pygame.display.update()
     time.sleep(0.3)
     
@@ -236,8 +236,8 @@ def SnakeQuestion(playerNumber,screen):
     # place and update
     screen.blit(Question, (120, 138))
     screen.blit(logo, (300, 100))  # place logo  #2
-    message_display("player1 questions:{0}\{1}".format(PlayersInfo[1][1],PlayersInfo[1][0]), 340, 8, 20, (0,0,0), screen)
-    message_display("player2 questions:{0}\{1}".format(PlayersInfo[2][1],PlayersInfo[2][0]), 340, 40, 20, (0,0,0), screen)
+    message_display("player1 questions:{0}\{1}".format(PlayersInfo[1][1],PlayersInfo[1][0]), 400, 8, 20, (0,0,0), screen)
+    message_display("player2 questions:{0}\{1}".format(PlayersInfo[2][1],PlayersInfo[2][0]), 400, 40, 20, (0,0,0), screen)
     pygame.display.update()
     while(True):
       for event in pygame.event.get():
@@ -348,8 +348,8 @@ def Snakes(screen):
     NumberGamesSankesAndLadders+=1
     update_data_dict()
     while(True):
-        message_display("player1 questions:{0}\{1}".format(PlayersInfo[1][1],PlayersInfo[1][0]), 340, 8, 20, (0,0,0), screen)
-        message_display("player2 questions:{0}\{1}".format(PlayersInfo[2][1],PlayersInfo[2][0]), 340, 40, 20, (0,0,0), screen)
+        message_display("player1 questions:{0}\{1}".format(PlayersInfo[1][1],PlayersInfo[1][0]), 400, 8, 20, (0,0,0), screen)
+        message_display("player2 questions:{0}\{1}".format(PlayersInfo[2][1],PlayersInfo[2][0]), 400, 40, 20, (0,0,0), screen)
         
         Change = False  # Change player flag
         screen.blit(logo, (0, 0))  # place logo 
@@ -410,8 +410,8 @@ def Snakes(screen):
               # cube_answer=1                                               ######################force cube
               screen.blit(person1, (X1, Y1))
               screen.blit(person2, (X2, Y2))
-              message_display("player1 questions:{0}\{1}".format(PlayersInfo[1][1],PlayersInfo[1][0]), 340, 8, 20, (0,0,0), screen)
-              message_display("player2 questions:{0}\{1}".format(PlayersInfo[2][1],PlayersInfo[2][0]), 340, 40, 20, (0,0,0), screen)
+              message_display("player1 questions:{0}\{1}".format(PlayersInfo[1][1],PlayersInfo[1][0]), 400, 8, 20, (0,0,0), screen)
+              message_display("player2 questions:{0}\{1}".format(PlayersInfo[2][1],PlayersInfo[2][0]), 400, 40, 20, (0,0,0), screen)
               screen.blit(cubes[cube_answer], (400, 300))  # show the suitable cube
               pygame.display.update()
               time.sleep(0.8)  ##########cube time delay
