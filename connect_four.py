@@ -32,9 +32,6 @@ def update_wins_list():
         x=line
         
     file.close()
-    
-    
-    
     wins[0]=int(x[0])
     wins[1]=int(x[2])
 
