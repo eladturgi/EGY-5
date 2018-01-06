@@ -32,8 +32,11 @@ def update_wins_list():
         x+=line
         
     file.close()
+<<<<<<< HEAD
     x=x.split()
     
+=======
+>>>>>>> branch 'Changes' of https://github.com/eladturgi/EGY-5
     wins[0]=int(x[0])
     wins[1]=int(x[1])
 
@@ -460,5 +463,4 @@ def Start_Game(screen):
                   PC_choice = None
         
  #-------------------------------------------------------
- # end 4 in row game
-     
+ # end 4 in row game   
