@@ -19,8 +19,6 @@ def message_display(text,x,y,font_size,color):
     screen.blit(TextSurf, (x,y))
     
 
-    
-
 def LoginWindow(sort):
   Tpassword = '1234'
   Epassword = '4321'
