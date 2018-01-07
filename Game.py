@@ -93,10 +93,16 @@ def LoginWindow(sort):
 screen_width = 800
 screen_length = 600
 
-#Game is off
+screen=None
 
-pygame.init()  
-screen = pygame.display.set_mode((screen_width, screen_length))
+def start_the_game():
+    init()
+    Game()
+    
+def init():
+    global screen
+    pygame.init()  
+    screen = pygame.display.set_mode((screen_width, screen_length))
 
 
 # Global Game counters
@@ -328,5 +334,5 @@ def Game():
     pygame.quit()
 
 
-Game()
-
+#control the initiation of the game
+start_the_game()

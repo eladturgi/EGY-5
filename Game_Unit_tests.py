@@ -153,7 +153,8 @@ class Test(unittest.TestCase):
         #testing that the initial amount of right answers for both players is zero
         result=LaddersAndSnakes.PlayersInfo[1][1]+LaddersAndSnakes.PlayersInfo[2][1]
         self.assertEqual(result, 0, "error! 2 players initial number of right answers is not zero!")
-            
+     
+           
     
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']
