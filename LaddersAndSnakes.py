@@ -89,21 +89,21 @@ TurnPlayer1 = True  # indicate whose turn is now
 def update_data_dict():
     filename = "data.txt"
     file = open(filename, "r")
-    x=[]
+    x=""
     for line in file:
-       x.append(line)
+       x+=line
     
     file.close()
-    
-    y=map(lambda x:x[-2::-1],x)
-    y=map(lambda x:x[::-1],y)
-    
-    z=list(y)
+
+
+    x=x.split('\n')
+    x=list(map(lambda x:x.split(),x))
     
     for i in range(1,16):
-        Q[i][0]=int(z[i-1][0])
-        Q[i][1]=int(z[i-1][2])
-
+        Q[i][0]=int(x[i-1][0])
+        Q[i][1]=int(x[i-1][1])
+        
+    
 def update_data_file():
     fh = open("data.txt", "w")
     lines_of_text=[]
