@@ -3,6 +3,7 @@ import connect_four
 import LaddersAndSnakes
 import unittest
 
+Game.START=False
 #help board for unit test connect 4
 empty=None
 Board = [{0:empty, 1:empty, 2:empty, 3:empty, 4:empty, 5:empty, "Y":534, "X":154, "Revenue":0},
@@ -15,6 +16,11 @@ Board = [{0:empty, 1:empty, 2:empty, 3:empty, 4:empty, 5:empty, "Y":534, "X":154
 
  
 class Test(unittest.TestCase):
+    
+    #test0
+    def test_if_game_is_turned_off_for_unittest(self):
+        #testing that the game is off and ready for the unit test
+        self.assertTrue(Game.game_is_not_runnig, "error! the game is running! not ready for unit test!")
     
     #help function check snakes and ladders dictionaries and verify that all the 15 question are inside
     def is_all_question_in_dict(self,dictName):

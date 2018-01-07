@@ -95,7 +95,11 @@ screen_length = 600
 
 screen=None
 
+game_is_not_runnig=True
+
 def start_the_game():
+    global game_is_not_runnig
+    game_is_not_runnig=False
     init()
     Game()
     
