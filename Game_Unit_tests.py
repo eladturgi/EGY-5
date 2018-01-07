@@ -20,7 +20,7 @@ class Test(unittest.TestCase):
     #test0
     def test_if_game_is_turned_off_for_unittest(self):
         #testing that the game is off and ready for the unit test
-        self.assertTrue(Game.game_is_not_runnig, "error! the game is running! not ready for unit test!")
+        self.assertTrue(Game.game_is_not_runnig, "error! the game is running! not ready for unit test, go to line 342 and turn off the fucntion 'start_the_game'!")
     
     #help function check snakes and ladders dictionaries and verify that all the 15 question are inside
     def is_all_question_in_dict(self,dictName):
