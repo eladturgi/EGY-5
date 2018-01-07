@@ -30,11 +30,13 @@ class Test(unittest.TestCase):
             return True 
     #test1   
     def test_ladders_questions_dictionary(self):
+        #testing if the ladders question dictionary is full with 15 questions
         result=self.is_all_question_in_dict(LaddersAndSnakes.LQuestions)
         self.assertTrue(result, "error!not all ladders questions are inside his dictionary!")
-     
+        
     #test2    
     def test_snakes_questions_dictionary(self):
+        #testing if the snakes question dictionary is full with 15 questions
         result=self.is_all_question_in_dict(LaddersAndSnakes.SQuestions)
         self.assertTrue(result, "error!not all snakes questions are inside his dictionary!")
     
